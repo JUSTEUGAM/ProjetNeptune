@@ -49,17 +49,17 @@ class DefaultController
     {
         echo $this->twig->render('defaultController/error500.html.twig', []);
     }
-    public function contact()
+    public function chambres()
     {
-        echo $this->twig->render('defaultController/contact.html.twig', []);
+        echo $this->twig->render('defaultController/chambres.html.twig', []);
     }
-    public function Mentions()
+    public function connexion()
     {
-        echo $this->twig->render('defaultController/Mentions.html.twig', []);
+        echo $this->twig->render('defaultController/connexion.html.twig', []);
     }
-    public function Type()
+    public function inscription()
     {
-        echo $this->twig->render('defaultController/types.html.twig', []);
+        echo $this->twig->render('defaultController/inscription.html.twig', []);
     }
     public function produits()
     {

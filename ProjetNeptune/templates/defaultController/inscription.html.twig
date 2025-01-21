@@ -1,1 +1,26 @@
-Bomba
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} - Inscription {% endblock %} 
+       
+{% block content %} 
+    <div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-10">
+				 <h1 class="text-center text-black">Inscription</h1> 
+                 <div>
+Inscrivez-vous :
+    <form method="post" action="index.php?page=inscription">
+        <input type="email" placeholder="Saisir votre email" name="email" required/>
+        <input type="password" placeholder="Saisir votre mot de passe" name="password" required/>
+        <input type="lastname" placeholder="Saisir votre nom" name="lastname" required/>
+        <input type="firstname" placeholder="Saisir votre prénom" name="firstname" required/>
+        <input type="tel" placeholder="Saisir votre numéro de téléphone" name="phone"  pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" required/>
+        <input type="submit" value="S'inscrire" name="btInscription"/>
+    </form>
+</div>
+
+
+			</div>
+		</div>
+	</div>
+{% endblock %} 

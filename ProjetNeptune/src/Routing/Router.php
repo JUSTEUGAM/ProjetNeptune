@@ -28,9 +28,9 @@ class Router
             'home' => [DefaultController::class, 'home'],
             '404' => [DefaultController::class, 'error404'],
             '500' => [DefaultController::class, 'error500'],
-            'contact' => [DefaultController::class, 'contact'],
-            'Mentions' => [DefaultController::class, 'Mentions'],
-            'types' => [DefaultController::class, 'types'],
+            'chambres' => [DefaultController::class, 'chambres'],
+            'connexion' => [DefaultController::class, 'connexion'],
+            'inscription' => [DefaultController::class, 'inscription'],
             'produits' => [DefaultController::class, 'produits'],
             'User' => [DefaultController::class, 'User'],
 
