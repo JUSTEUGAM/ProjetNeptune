@@ -13,7 +13,8 @@ class User
     private string $cp;
     private string $telephone;
     private string $email;
-    public function __construct(?int $id, string $nom, string $prenom, string $dateNaissance, string $rue, string $ville, string $cp, string $telephone, string $email)
+    private string $isAdmin;
+    public function __construct(?int $id, string $nom, string $prenom, string $dateNaissance, string $rue, string $ville, string $cp, string $telephone, string $email, string $isAdmin)
     {
         $this->id = $id;
         $this->nom = $nom;
@@ -24,6 +25,7 @@ class User
         $this->cp = $cp;
         $this->telephone = $telephone;
         $this->email = $email;
+        $this->isAdmin = $isAdmin;
     }
     public function getId(): ?int
     {
@@ -97,5 +99,6 @@ class User
     {
         return $this->email;
     }
+    
     
 }
