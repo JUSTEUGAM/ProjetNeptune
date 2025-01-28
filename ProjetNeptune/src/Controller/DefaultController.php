@@ -4,7 +4,7 @@ namespace MyApp\Controller;
 use MyApp\Service\DependencyContainer;
 use Twig\Environment;
 use MyApp\Model\TypeModel;
-use MyApp\Model\ProductModel;
+use MyApp\Entity\Users;
 use MyApp\Model\UserModel;
 
 
@@ -61,14 +61,18 @@ class DefaultController
     {
         echo $this->twig->render('defaultController/inscription.html.twig', []);
     }
+    public function profil()
+    {
+        echo $this->twig->render('defaultController/profil.html.twig', []);
+    }
     public function produits()
     {
         $produits = $this->productModel->getAllProduits();
         echo $this->twig->render('defaultController/produits.html.twig', ['produits'=>$produits]);
     }
-    public function User()
+    public function Users()
     {
         $user = $this->userModel->getAllUsers();
-        echo $this->twig->render('defaultController/User.html.twig', ['users'=>$user]);
+        echo $this->twig->render('defaultController/profil.html.twig', ['users'=>$users]);
     }
 }

@@ -9,6 +9,16 @@
 			<div class="col-12 col-md-10">
 				 <h1 class="text-center text-black">Connexion</h1> 
                  <div>
+
+                {% for user in users %}
+					{{user.IDuser}}
+					{{user.userName}}
+					{{user.userFirstName}}
+                    {{user.userPass}}
+                    {{user.userNum}}
+                    {{user.userEmail}}<br/>
+					{% endfor%}
+
 Connectez-vous :
     <form method="post">
         <input type="email" placeholder="Saisir votre email" required/>
@@ -18,6 +28,8 @@ Connectez-vous :
 </div>
 
     <a href="index.php?page=inscription">Inscrivez-vous ici</a>
+
+    
 
 			</div>
 		</div>

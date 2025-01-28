@@ -2,7 +2,7 @@
 declare (strict_types = 1);
 namespace MyApp\Model;
 
-use MyApp\Entity\User;
+use MyApp\Entity\Users;
 use PDO;
 
 class UserModel
@@ -14,13 +14,13 @@ class UserModel
     }
     public function getAllUsers(): array
     {
-        $sql = "SELECT * FROM User";
+        $sql = "SELECT * FROM Users";
         $stmt = $this->db->query($sql);
-        $user = [];
+        $users = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $user[] = new User($row['id'], $row['nom'], $row['prenom'], $row['dateNaissance'], $row['rue'], $row['ville'], $row['cp'], $row['telephone'], $row['email']);
+            $users[] = new Users($row['IDuser'], $row['userName'], $row['userFirstName'], $row['userPass'], $row['userNum'], $row['userEmail']);
         }
-        return $user;
+        return $users;
 
     }
 }

@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	{{ parent() }}
+	- Mon profil
+{% endblock %}
+{% block content %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-10">
+				<h1 class="text-center text-black">Mon profil</h1>
+				{% for user in users %}
+					{{user.IDuser}}
+					{{user.userName}}
+					{{user.userFirstName}}
+                    {{user.userEmail}}
+                    {{user.userNum}}
+                    <br/>
+					{% endfor%}
+				</div>
+			</div>
+		</div>
+	{% endblock %}

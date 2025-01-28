@@ -31,8 +31,8 @@ class Router
             'chambres' => [DefaultController::class, 'chambres'],
             'connexion' => [DefaultController::class, 'connexion'],
             'inscription' => [DefaultController::class, 'inscription'],
-            'produits' => [DefaultController::class, 'produits'],
-            'User' => [DefaultController::class, 'User'],
+            'profil' => [DefaultController::class, 'profil'],
+           
 
         ];
         $this->defaultPage = 'home';
