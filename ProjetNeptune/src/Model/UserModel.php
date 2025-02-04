@@ -18,11 +18,12 @@ class UserModel
         $stmt = $this->db->query($sql);
         $users = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $users[] = new User($row['IDuser'], $row['userName'], $row['userEmail'], $row['userPass'], $row['userNum'], $row['isAdmin'], $row['userFirstName']);
+            $users[] = new User($row['IDuser'], $row['userName'], $row['userEmail'], $row['userPass'], $row['userNum'], ($row['isAdmin'] == 1) ? true : false, $row['userFirstName']);
         }
         return $users;
 
     }
+
     public function getOneUser(int $IDuser): ?User
     {
         $sql = "SELECT * from User where IDuser = :IDuser";
@@ -33,7 +34,7 @@ class UserModel
         if (!$row) {
             return null;
         }
-        return new User($row['IDuser'], $row['userName'], $row['userEmail'], $row['userPass'], $row['userNum'], $row['isAdmin'], $row['userFirstName']);
+        return new User($row['IDuser'], $row['userName'], $row['userEmail'], $row['userPass'], $row['userNum'], ($row['isAdmin'] == 1) ? true : false, $row['userFirstName']);
     }
     public function createUser(User $users): bool
     {

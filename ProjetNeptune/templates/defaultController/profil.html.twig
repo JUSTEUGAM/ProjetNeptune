@@ -9,12 +9,12 @@
 			<div class="col-12 col-md-10">
 				<h1 class="text-center text-black">Mon profil</h1>
 				{% for user in users %}
-					{{user.IDuser}}
-					{{user.userName}}
-                    {{user.userEmail}}
-                    {{user.userNum}}
-					{{user.isAdmin}}
-					{{user.userFirstName}}
+					{{user.getId}}
+					{{user.getNom}}
+                    {{user.getPrenom}}
+                    {{user.getNum}}
+					{{user.getIsAdmin}}
+					{{user.getEmail}}
                     <br/>
 					{% endfor%}
 				</div>

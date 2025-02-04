@@ -20,6 +20,7 @@ class User
         $this->userNum = $userNum;
         $this->isAdmin = $isAdmin;
         $this->userFirstName = $userFirstName;
+
     }
     public function getId(): ?int
     {
@@ -69,11 +70,11 @@ class User
     {
         return $this->userNum;
     }
-    public function setIsAdmin(string $isAdmin): void
+    public function setIsAdmin(bool $isAdmin): void
     {
         $this->isAdmin = $isAdmin;
     }
-    public function getIsAdmin(): string
+    public function getIsAdmin(): bool
     {
         return $this->isAdmin;
     }

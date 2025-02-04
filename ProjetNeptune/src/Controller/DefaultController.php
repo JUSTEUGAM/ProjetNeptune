@@ -44,16 +44,6 @@ class DefaultController
         echo $this->twig->render('defaultController/connexion.html.twig', []);
     }
 
-    public function profil()
-    {
-        echo $this->twig->render('defaultController/profil.html.twig', []);
-    }
-
-    public function User()
-    {
-        $users = $this->userModel->getAllUser();
-        echo $this->twig->render('defaultController/profil.html.twig', ['users'=>$users]);
-    }
     public function inscription()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -63,7 +53,7 @@ class DefaultController
             $userNum = filter_input(INPUT_POST, 'userNum', FILTER_SANITIZE_STRING);
             $userPass = filter_input(INPUT_POST, 'userPass', FILTER_SANITIZE_STRING);
             if (!empty($_POST['userName']) && !empty($_POST['userFirstName']) && !empty($_POST['userEmail']) && !empty($_POST['userNum']) && !empty($_POST['userPass'])) {
-                $users = new User(null, $userName,  $userEmail, $userPass, $userNum, false, $userFirstName);
+                $users = new User(null, $userName,  $userEmail, $userPass, $userNum, FALSE, $userFirstName);
                 $success = $this->UserModel->createUser($users);
                 if ($success) {
                     header('Location: index.php?page=profil');
@@ -73,5 +63,11 @@ class DefaultController
 
         }
         echo $this->twig->render('defaultController/inscription.html.twig', []);
+    }
+
+    public function profil()
+    {
+        $users = $this->UserModel->getOneUser(intVal($IDuser));
+        echo $this->twig->render('defaultController/profil.html.twig', ['users' => $users]);
     }
 }
