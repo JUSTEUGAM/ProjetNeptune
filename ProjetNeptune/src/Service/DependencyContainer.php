@@ -1,6 +1,7 @@
 <?php
 namespace MyApp\Service;
 
+
 use MyApp\Model\ProductModel;
 use MyApp\Model\TypeModel;
 use MyApp\Model\UserModel;
@@ -27,14 +28,6 @@ class DependencyContainer
     {
         switch ($key) {
             case 'PDO':
-                return $this->createPDOInstance();
-            case 'TypeModel':
-                $pdo = $this->get('PDO');
-                return new TypeModel($pdo);
-                return $this->createPDOInstance();
-            case 'ProductModel':
-                $pdo = $this->get('PDO');
-                return new ProductModel($pdo);
                 return $this->createPDOInstance();
             case 'UserModel':
                 $pdo = $this->get('PDO');

@@ -11,9 +11,10 @@
 				{% for user in users %}
 					{{user.IDuser}}
 					{{user.userName}}
-					{{user.userFirstName}}
                     {{user.userEmail}}
                     {{user.userNum}}
+					{{user.isAdmin}}
+					{{user.userFirstName}}
                     <br/>
 					{% endfor%}
 				</div>

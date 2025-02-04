@@ -1,10 +1,10 @@
 <?php
 declare (strict_types = 1);
 namespace MyApp\Controller;
+
 use MyApp\Service\DependencyContainer;
 use Twig\Environment;
-use MyApp\Model\TypeModel;
-use MyApp\Entity\Users;
+use MyApp\Entity\User;
 use MyApp\Model\UserModel;
 
 
@@ -12,27 +12,13 @@ class DefaultController
 {
     private $twig;
 
-    private $typeModel;
-
-    private $ProductModel;
-
     private $UserModel;
   
     public function __construct(Environment $twig, DependencyContainer $dependencyContainer)
     {
         $this->twig = $twig;
 
-        $this->typeModel = $dependencyContainer->get('TypeModel');
-
-        $this->productModel = $dependencyContainer->get('ProductModel');
-
-        $this->userModel = $dependencyContainer->get('UserModel');
-    }
-
-    public function types()
-    {
-        $types = $this->typeModel->getAllTypes();
-        echo $this->twig->render('defaultController/types.html.twig', ['types'=>$types]);
+        $this->UserModel = $dependencyContainer->get('UserModel');
     }
 
     public function home()
@@ -57,22 +43,35 @@ class DefaultController
     {
         echo $this->twig->render('defaultController/connexion.html.twig', []);
     }
-    public function inscription()
-    {
-        echo $this->twig->render('defaultController/inscription.html.twig', []);
-    }
+
     public function profil()
     {
         echo $this->twig->render('defaultController/profil.html.twig', []);
     }
-    public function produits()
+
+    public function User()
     {
-        $produits = $this->productModel->getAllProduits();
-        echo $this->twig->render('defaultController/produits.html.twig', ['produits'=>$produits]);
-    }
-    public function Users()
-    {
-        $user = $this->userModel->getAllUsers();
+        $users = $this->userModel->getAllUser();
         echo $this->twig->render('defaultController/profil.html.twig', ['users'=>$users]);
+    }
+    public function inscription()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userName = filter_input(INPUT_POST, 'userName', FILTER_SANITIZE_STRING);
+            $userFirstName = filter_input(INPUT_POST, 'userFirstName', FILTER_SANITIZE_STRING);
+            $userEmail = filter_input(INPUT_POST, 'userEmail', FILTER_SANITIZE_STRING);
+            $userNum = filter_input(INPUT_POST, 'userNum', FILTER_SANITIZE_STRING);
+            $userPass = filter_input(INPUT_POST, 'userPass', FILTER_SANITIZE_STRING);
+            if (!empty($_POST['userName']) && !empty($_POST['userFirstName']) && !empty($_POST['userEmail']) && !empty($_POST['userNum']) && !empty($_POST['userPass'])) {
+                $users = new User(null, $userName,  $userEmail, $userPass, $userNum, false, $userFirstName);
+                $success = $this->UserModel->createUser($users);
+                if ($success) {
+                    header('Location: index.php?page=profil');
+                }
+
+            }
+
+        }
+        echo $this->twig->render('defaultController/inscription.html.twig', []);
     }
 }

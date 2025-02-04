@@ -2,28 +2,28 @@
 declare (strict_types = 1);
 namespace MyApp\Entity;
 
-class Users
+class User
 {
     private ?int $IDuser = null;
     private string $userName;
-    private string $userFirstName;
+    private string $userEmail;
     private string $userPass;
     private string $userNum;
-    private string $userEmail;
-    private string $isAdmin;
-    public function __construct(?int $IDuser, string $userName, string $userFirstName, string $userPass, string $userNum, string $userEmail, string $isAdmin)
+    private bool $isAdmin;
+    private string $userFirstName;
+    public function __construct(?int $IDuser, string $userName, string $userEmail,  string $userPass, string $userNum,  bool $isAdmin, string $userFirstName)
     {
         $this->IDuser = $IDuser;
         $this->userName = $userName;
-        $this->userFirstName = $userFirstName;
+        $this->userEmail = $userEmail;
         $this->userPass = $userPass;
         $this->userNum = $userNum;
-        $this->userEmail = $userEmail;
         $this->isAdmin = $isAdmin;
+        $this->userFirstName = $userFirstName;
     }
     public function getId(): ?int
     {
-        return $this->Iduser;
+        return $this->IDuser;
     }
     public function setId(?int $IDuser): void
     {
@@ -45,11 +45,11 @@ class Users
     {
         return $this->userFirstName;
     }
-    public function setMotdePasse(string $userPass): void
+    public function setPass(string $userPass): void
     {
         $this->userPass = $userPass;
     }
-    public function getMotdePasse(): string
+    public function getPass(): string
     {
         return $this->userPass;
     }
@@ -69,11 +69,11 @@ class Users
     {
         return $this->userNum;
     }
-    public function setisAdmin(string $isAdmin): void
+    public function setIsAdmin(string $isAdmin): void
     {
         $this->isAdmin = $isAdmin;
     }
-    public function getisAdmin(): string
+    public function getIsAdmin(): string
     {
         return $this->isAdmin;
     }
